@@ -1,0 +1,24 @@
+let breweries = async ()=>{
+    let api = 'https://api.openbrewerydb.org/breweries?per_page=3'
+    let res = await fetch(
+        api,
+        {
+            method:"GET"
+        }
+    )
+    console.log(res);
+    let data = await res.json()
+    console.log(data);
+
+    for(let i of data){
+        let dataShowImage = i;
+        console.log(dataShowImage);
+       let data_to_added = `
+       <p>${dataShowImage}</p>
+       `
+       var parent = document.createElement("div")
+       parent.innerHTML = data_to_added
+       document.body.append(parent)
+    }
+}
+breweries();
